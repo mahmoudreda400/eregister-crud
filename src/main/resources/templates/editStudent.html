@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<title>Insert title here</title>
+</head>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+		<a class="navbar-brand" href="/eregistrar/home">Home</a> 
+		<a class="navbar-brand" href="/eregistrar/students">Students</a> 
+		<a class="navbar-brand" href="/eregistrar/addStudent">Add Student</a>
+	</nav>
+	
+	<div class="container">
+		<div>
+			<span class="title">Add New Student</span>
+		</div>
+
+
+		<div class="content">
+			<form id="newStudentForm" action="/eregistrar/saveStudent" method="post" th:object="${student}">
+			<fieldset>
+			 <input type="hidden" name="studentId" th:value="${student.studentId}"/>
+				
+				<div class="form-group">
+					<label for="studentNumber">Student Number:</label> <input type="text"
+						name="studentNumber" class="form-control" id="studentNumber" th:value="${student.studentNumber}" required="required">
+				</div>
+				<div class="form-group">
+					<label for="firstName">First Name:</label> <input type="text"
+						name="firstName" class="form-control" id="firstName" th:value="${student.firstName}" required="required">
+				</div>
+				<div class="form-group">
+					<label for="middleName">Middle Name:</label> <input type="text"
+						name="middleName" class="form-control" id="middleName" th:value ="${student.middleName}">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name:</label> <input type="text"
+						name="lastName" class="form-control" id="lastName" th:value ="${student.lastName}" required="required">
+				</div>
+				<div class="form-group">
+					<label for="cgpa">cgpa:</label> <input type="text"
+						name="cgpa" class="form-control" id="cgpa" th:value ="${student.cgpa}" >
+				</div>
+				<div class="form-group">
+					<label for="enrollmentDate">Enrollment Date:</label> <input
+						type="date" name="enrollmentDate" class="form-control" id="enrollmentDate" th:value ="${student.enrollmentDate}" required="required">
+				</div>
+				<div class="form-group">
+					<label for="isInternational">International:</label>
+						 <select class="browser-default custom-select" name="isInternational" th:value = "${student.isInternational}" required="required">
+						<option value="true">Yes</option>
+						<option value="false">No</option>
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Save</button>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
